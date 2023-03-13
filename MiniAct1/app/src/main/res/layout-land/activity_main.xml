@@ -10,7 +10,7 @@
         android:id="@+id/boto"
         android:layout_width="183dp"
         android:layout_height="72dp"
-        android:text="@string/buttonText"
+        android:text="@string/startbuttonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

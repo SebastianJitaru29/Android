@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MiniAct2</string>
+    <string name="ButtonText">Pantalla de despedida</string>
+    <string name="HelloWorld">Hola mundo</string>
+    <string name="introduce_the_bye_message">Introduce el mensaje de despedida</string>
+    <string name="introduce_number_of_repetetition">Introduce number of repetetition</string>
+    <string name="go_back">Go back</string>
+    <string name="defaultBye">defaultbye</string>
+    <string name="defaultRep">0</string>
+    <string name="repeated_text">Repeated text:</string>
+</resources>

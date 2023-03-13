@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="introduce_the_bye_message">Introduce the bye message</string>
+    <string name="introduce_number_of_repetetition">Introduce number of repetetition</string>
+    <string name="go_back">Go back</string>
+</resources>

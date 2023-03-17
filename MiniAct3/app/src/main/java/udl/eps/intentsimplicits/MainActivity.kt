@@ -15,6 +15,7 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
@@ -152,6 +153,7 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
     }
     private val PICK_IMAGE_REQUEST = 1
 
+    private val PICK_CONTACT_REQUEST = 2
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
@@ -166,6 +168,21 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
 
             val imageView = findViewById<ImageView>(R.id.imageView)
             imageView.setImageBitmap(bitmap) // Set the image bitmap to the ImageView
+        }
+        if (requestCode == PICK_CONTACT_REQUEST && resultCode == RESULT_OK && data != null) {
+            val contactUri = data.data // Get the selected contact URI
+            val cursor =
+                contactUri?.let { contentResolver.query(it, null, null, null, null) } // Query the contact details using the contact URI
+
+            if (cursor != null && cursor.moveToFirst()) {
+                val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME) // Get the column index of the contact name
+                val name = cursor.getString(nameIndex) // Get the contact name from the cursor
+
+                val textView = findViewById<TextView>(R.id.textView)
+                textView.text = name // Set the contact name to the TextView
+            }
+
+            cursor?.close() // Close the cursor to release the resources
         }
     }
 
@@ -295,9 +312,18 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
 
     private fun accessContactsAction() {
         Toast.makeText(this, getString(R.string.opcion6), Toast.LENGTH_LONG).show()
+        /* Esto solo visualiza contactos
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = ContactsContract.Contacts.CONTENT_URI
         startActivity(intent)
+        */
+        //Obligatorio
+        //in = new Intent(Intent.ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI);
+        //startActivity(in);
+        //Optativo
+        val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+        startActivityForResult(intent, PICK_CONTACT_REQUEST)
+
     }
 
     private fun callPhoneIfPermissions() {

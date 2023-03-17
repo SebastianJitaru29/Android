@@ -47,6 +47,7 @@
     <string name="email">pepito@gmail.com</string>
     <string name="galeria">Galeria</string>
     <string name="camera">CAMERA</string>
+    <string name="contacto_seleccionado">Contacto seleccionado</string>
 
 
 </resources>
